@@ -3,11 +3,14 @@ package src;
 
 import tributos.Icms;
 
+import java.math.BigDecimal;
+
 public class ProgramaImposto {
 
     public static void main (String[] args) {
         Icms icms = new Icms();
-        System.out.println("ICMS: " + icms.Icms( 18, 100, 'i') );
+        BigDecimal imposto = new BigDecimal(icms.Icms( 18, 100, 'n') );
+        System.out.println("ICMS: " + imposto.floatValue() );
 
     }
 }
