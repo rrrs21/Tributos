@@ -1,4 +1,6 @@
-public class icms {
+package tributos;
+
+public class Icms {
 
     private float aliquota;
     private float reducao;
@@ -8,31 +10,31 @@ public class icms {
     private char tipoReducao;
     private char tipoCalculo;
 
-    public static icms() {
+    public  Icms() {
     }
 
-/* Cálculo sobre do ICMS. Quando o
-* @tipoCalculo é n a aliquota é normal e quando é i o calculo interno
-*/
+    /* Cálculo sobre do ICMS. Quando o
+     * @tipoCalculo é n a aliquota é normal e quando é i o calculo interno
+     */
 
-    public static double icms(float aliquota, double valor, char tipoCalculo) {
-        this.aliquota = aliquota;
+    public  double Icms(float aliquota, double valor, char tipoCalculo) {
+        this.aliquota = aliquota/100;
         this.valor = valor;
         this.tipoCalculo = tipoCalculo;
         switch (this.tipoCalculo) {
             case 'n': return this.valor * this.aliquota;
             case 'i': return this.valor/(1-this.aliquota) * this.aliquota;
-            default: return 0,00d;
+            default: return 0.00d;
         }
     }
 
 
     /*Cálculo incluindo as duas formas de redução previstas na legislação do RICMS
-*@tipoReducao : é a variável que determinará qual das duas reduções será feito o cálculo, sendo
-* b para a redução da direta da base de calculo e o c para a redução da carga tributária para que a aliquota
-* atinja um determinado valor
-* */
-    public static double icms(float aliquota, float reducao, double valor, char tipoReducao) {
+     *@tipoReducao : é a variável que determinará qual das duas reduções será feito o cálculo, sendo
+     * b para a redução da direta da base de calculo e o c para a redução da carga tributária para que a aliquota
+     * atinja um determinado valor
+     * */
+    public double Icms(float aliquota, float reducao, double valor, char tipoReducao) {
         this.aliquota = aliquota;
         this.reducao = reducao;
         this.valor = valor;
@@ -42,6 +44,6 @@ public class icms {
             case 'c': return (((this.reducao *100) / this.aliquota) * this.valor) * this.aliquota;
             default: return 0.00d;
 
+        }
     }
 }
-
